@@ -9,7 +9,8 @@ export default {
         Yellow: "#F6BD60",
         LilacWhite: "#EAE8FF",
         Black: "#001313",
-        deepGreen: "#334242"
+        deepGreen: "#334242",
+        White: '#FAFAFA',
       },
     },
   },

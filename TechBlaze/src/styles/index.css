@@ -17,8 +17,7 @@
   text-lg leading-[21.6px]  cursor-pointer;
   }
   .tertiaryBtn {
-    @apply bg-transparent border
-  border-tertiary flex flex-wrap 
+    @apply bg-transparent border-none flex flex-wrap 
   text-Yellow hover:focus:bg-[#DDAA56] 
   hover:focus:border-[#DDAA56] hover:focus:active:text-Black active:bg-[#F6BD60] active:border-[#F6BD60] disabled:bg-[#B0B6B6] disabled:border-[#B0B6B6] disabled:text-deepGreen 
   py-4 px-5 rounded-lg font-semibold 
@@ -36,18 +35,68 @@
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Font color */
+  --nomad-font-color: Black;
+  --nomad-secondary-color: White;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Font style */
+  --nomad-font-style-normal: normal;
+  --nomad-font-style-italic: italic;
 
+  /*other root styling*/
+}
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  place-items: center;
+  color: var(--nomad-font-color);
+  background-color: var(--nomad-secondary-color);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+* {
+  box-sizing: border-box;
+  font-family: "Urbanist", sans-serif;
+  line-height: 1.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--nomad-font-color);
+  letter-spacing: normal;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+}
+h1 {
+  line-height: 4.2rem;
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+  line-height: 2.4rem;
+}
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+}
+h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.8rem;
+}
+p,
+li {
+  font-size: 1.1rem;
+  line-height: 2rem;
+  font-weight: 400;
+}
+li a {
+  font-weight: 600;
 }
 
 a {
@@ -57,17 +106,4 @@ a {
 }
 a:hover {
   color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
 }
