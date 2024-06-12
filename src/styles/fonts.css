@@ -1,0 +1,49 @@
+@font-face {
+  font-family: "Urbanist";
+  src: url("../assets/font/urbanist/Urbanist-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-stretch: 50% 200%;
+  font-style: normal;
+  font-optical-sizing: auto;
+}
+
+@font-face {
+  font-family: "Urbanist Italic";
+  src: url("../assets/font/urbanist/Urbanist-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-stretch: 50% 200%;
+  font-style: italic;
+  font-optical-sizing: auto;
+}
+
+@font-face {
+  font-family: "ClashDisplay";
+  src: url("../assets/font/clashDisplay/ClashDisplayBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-optical-sizing: auto;
+}
+
+@font-face {
+  font-family: "ClashDisplay";
+  src: url("../assets/font/clashDisplay/ClashDisplaySemibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-optical-sizing: auto;
+}
+
+@font-face {
+  font-family: "ClashDisplay";
+  src: url("../assets/font/clashDisplay/ClashDisplayMedium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-optical-sizing: auto;
+}
+
+@font-face {
+  font-family: "ClashDisplay";
+  src: url("../assets/font/clashDisplay/ClashDisplayRegular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-optical-sizing: auto;
+}
