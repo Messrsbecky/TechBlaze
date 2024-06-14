@@ -2,8 +2,7 @@ import { useState } from "react";
 import google from "../../../assets/icons/google.svg";
 import { logIn, signInWithGoogle } from "../functions/authService"; //addition
 import Spinner from "../../../assets/icons/Spinner.svg"; //addition
-import Toast from '../functions/axiosConfig';
-
+import Toast from "../functions/axiosConfig";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,48 +13,39 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //removal
-    //  console.log("Email:", email);
-    // console.log("Password:", password);
-    // Handle form submission here
-
     //addition
 
     try {
-        setIsLoading(true);
+      setIsLoading(true);
       const user = await logIn(email, password);
       if (user) {
-
-          setIsLoading(false);
-        //   alert("User logged in successfully!");
-        // Redirect to home page or dashboard
+        setIsLoading(false);
       }
     } catch (err) {
-        setIsLoading(false);
+      setIsLoading(false);
       setError(err.message);
     }
   };
 
-
- const handleGoogleSignIn = async () => {
-   try {
-     setIsLoading(true);
-     await signInWithGoogle();
-     Toast.fire({
-       icon: "success",
-       title: "User signed in with Google successfully!",
-     });
-     setIsLoading(false);
-     setError(null);
-   } catch (err) {
-     setIsLoading(false);
-     Toast.fire({
-       icon: "error",
-       title: err.message,
-     });
-     setError(err.message);
-   }
- };
+  const handleGoogleSignIn = async () => {
+    try {
+      setIsLoading(true);
+      await signInWithGoogle();
+      Toast.fire({
+        icon: "success",
+        title: "User signed in with Google successfully!",
+      });
+      setIsLoading(false);
+      setError(null);
+    } catch (err) {
+      setIsLoading(false);
+      Toast.fire({
+        icon: "error",
+        title: err.message,
+      });
+      setError(err.message);
+    }
+  };
 
   return (
     <form
@@ -113,12 +103,6 @@ const Login = () => {
               "Log in"
             )}
           </button>
-
-          {/* <button type="button" onClick={handleGoogleSignIn}
-          className=" secondaryBtn gap-2 w-full">
-            <img src={google} alt="google icon" className="w-5 h-5" />
-            Log in with Google
-          </button> */}
 
           <button
             type="button"
