@@ -1,16 +1,86 @@
-import React, { useState } from "react";
-import google from "../../../assets/icons/google.svg";
 
-const Login = () => {
+import { useState } from "react";
+import google from "../../../assets/icons/google.svg";
+import { signUp, signInWithGoogle } from "../functions/authService"; //addition
+import { writeUserData } from "../functions/database"; //addition
+import Spinner from "../../../assets/icons/Spinner.svg"; //addition
+import Swal from "sweetalert2"; //addition
+
+
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  //addition
+  const [confirmPassword, setConfirmPassword] = useState(""); // addition
+  const [setError] = useState(null);
+  const [setUserId] = useState("");
+  const [isLoading, setIsLoading] = useState(false); //addition
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-    // Handle form submission here
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    //addition
+
+    // TOAST CONFIG
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+
+    if (!email || !password || confirmPassword === " ") {
+      Toast.fire({
+        icon: "error",
+        title: "Fields can't be empty",
+      });
+      setError("Please enter both email and password");
+
+      return;
+    }
+    if (password !== confirmPassword) {
+      Toast.fire({
+        icon: "error",
+        title: "Passwords do not match",
+      });
+      setError("Password must be equal");
+      return;
+    }
+    try {
+      setIsLoading(true);
+
+      const user = await signUp(email, password);
+      setUserId(user.uid); // Set user ID
+      writeUserData(user.uid, email);
+      setIsLoading(false);
+      //alert("User created successfully!");
+      setError(null);
+    } catch (err) {
+      setIsLoading(false);
+      setError(err.message);
+    }
   };
+
+
+  const handleGoogleSignUp = async () => {
+    try {
+      setIsLoading(true);
+      const user = await signInWithGoogle();
+      setUserId(user.uid);
+       writeUserData(user.uid, user.email);
+
+      setIsLoading(false);
+      setError(null);
+    } catch (err) {
+      setIsLoading(false);
+
+      setError(err.message);
+    }
+
 
   return (
     <form
@@ -63,13 +133,16 @@ const Login = () => {
               className="block mb-2 
 text-base font-semibold"
             >
-             Confirm Password
+
+       
+
             </label>
             <input
               type="confirmPassword"
               id="comfirmPassword"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+
+              value={confirmPassword} //addition (from password)
+              onChange={(e) => setConfirmPassword(e.target.value)} //addition (from setPassword)
               placeholder="Enter password"
               required
               className="w-full inputFill"
@@ -77,21 +150,56 @@ text-base font-semibold"
           </div>
         </section>
         <section className="w-full flex flex-col items-center gap-6">
-          <input type="submit" value="Sign up" className="w-full primaryBtn" />
+
+          <button id="submit" type="submit" className="w-full primaryBtn">
+            {isLoading ? (
+              <img src={Spinner} alt="Loading..." className="w-5 h-5 mx-auto" />
+            ) : (
+              "Sign up"
+            )}
+          </button>
+
+         
+
+          <button
+            type="button"
+            className="secondaryBtn gap-2 w-full"
+            onClick={handleGoogleSignUp}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <img src={Spinner} alt="Loading..." className="w-5 h-5 mx-auto" />
+            ) : (
+              <>
+                <img src={google} alt="google icon" className="w-5 h-5" />
+                Sign up with Google
+              </>
+            )}
+</button>
+         
           <button type="button" className=" secondaryBtn gap-2 w-full">
             <img src={google} alt="google icon" className="w-5 h-5" />
             Sign up with google
+
           </button>
         </section>
       </div>
       <section className="text-center">
         <p>
+
+          Have an account already?
+          <span className="text-yellow-500 cursor-pointer font-bold ">
+            {" "}
+            Log in
+          </span>
+
         Have an account already?
           <span className="text-yellow-500 cursor-pointer font-bold "> Log in</span>
+
         </p>
       </section>
     </form>
   );
 };
-
-export default Login;
+}
+export default Signup;

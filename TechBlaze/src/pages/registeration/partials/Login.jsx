@@ -1,15 +1,50 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import google from "../../../assets/icons/google.svg";
+import { logIn, signInWithGoogle } from "../functions/authService"; //addition
+import Spinner from "../../../assets/icons/Spinner.svg"; //addition
+import Toast from "../functions/axiosConfig";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [setError] = useState(null); //addition
+  const [isLoading, setIsLoading] = useState(false); //addition
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-    // Handle form submission here
+
+    //addition
+
+    try {
+      setIsLoading(true);
+      const user = await logIn(email, password);
+      if (user) {
+        setIsLoading(false);
+      }
+    } catch (err) {
+      setIsLoading(false);
+      setError(err.message);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      setIsLoading(true);
+      await signInWithGoogle();
+      Toast.fire({
+        icon: "success",
+        title: "User signed in with Google successfully!",
+      });
+      setIsLoading(false);
+      setError(null);
+    } catch (err) {
+      setIsLoading(false);
+      Toast.fire({
+        icon: "error",
+        title: err.message,
+      });
+      setError(err.message);
+    }
   };
 
   return (
@@ -59,10 +94,30 @@ const Login = () => {
           </div>
         </section>
         <section className="w-full flex flex-col items-center gap-6">
-          <input type="submit" value="Log in" className="w-full primaryBtn" />
-          <button type="button" className=" secondaryBtn gap-2 w-full">
-            <img src={google} alt="google icon" className="w-5 h-5" />
-            Log in with Google
+          {/* <input type="submit" value="Log in" className="w-full primaryBtn" /> */}
+
+          <button id="submit" type="submit" className="w-full primaryBtn">
+            {isLoading ? (
+              <img src={Spinner} alt="Loading..." className="w-5 h-5 mx-auto" />
+            ) : (
+              "Log in"
+            )}
+          </button>
+
+          <button
+            type="button"
+            className="secondaryBtn gap-2 w-full"
+            onClick={handleGoogleSignIn}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <img src={Spinner} alt="Loading..." className="w-5 h-5 mx-auto" />
+            ) : (
+              <>
+                <img src={google} alt="google icon" className="w-5 h-5" />
+                Log in with Google
+              </>
+            )}
           </button>
         </section>
       </div>
