@@ -1,11 +1,21 @@
-import loginBentoImg from "../../../assets/images/login.svg";
+import bentoImg from "../../../assets/images/login.svg";
+import bentoTab from "../../../assets/images/login-tab.svg";
 
 const LoginBento = () => {
   return (
-    <div className=" relative w-full max-h-full overflow-hidden">
-        <img src={loginBentoImg} alt="bento grid" className="h-full w-full object-contain"/>
-    </div>
-  ); 
+    <section>
+      <div className=" relative w-full max-h-full overflow-hidden">
+        <img
+          src={bentoImg}
+          alt="bento grid"
+          className="h-full w-full object-contain"
+        />
+      </div>
+      <div>
+        <img src={bentoTab} alt="mountain view" />
+      </div>
+    </section>
+  );
 };
 
 export default LoginBento;
