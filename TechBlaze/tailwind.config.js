@@ -10,9 +10,24 @@ export default {
         LilacWhite: "#EAE8FF",
         Black: "#001313",
         deepGreen: "#334242",
-        White: '#FAFAFA',
+        White: "#FAFAFA",
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // other plugins...
+    function ({ addUtilities }) {
+      addUtilities({
+        ".no-scrollbar": {
+          /* For Firefox */
+          "scrollbar-width": "none",
+          /* For Chrome, 
+  Safari, and Opera */
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        },
+      });
+    },
+  ],
 };
