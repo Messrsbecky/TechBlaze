@@ -1,12 +1,47 @@
-import react, { useState } from "react";
+/* eslint-disable no-undef */
+import { useState } from "react";
 import logo from "../assets/icons/NOMADHAVEN teal.svg";
+import { toast } from "react-toastify";
+import Spinner from "../assets/icons/Spinner.svg";
+
 const Footer = () => {
   const [email, setEmail] = useState("");
+ const [isLoading, setIsLoading] = useState(false); 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle the form submission here
-  };
+
+ const handleSubmit = async (e) => {
+   e.preventDefault();
+
+
+
+   try {
+          setIsLoading(true);
+     const response = await fetch("http://localhost:3000/subscribe", {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify({ email }),
+     });
+
+     const result = await response.json();
+
+     if (response.ok) {
+       setIsLoading(false);
+       toast.success("Subscription successful!");
+     //  alert(result.message);
+     } else {
+     setIsLoading(false);
+       toast.error(`Subscription failed: ${result.error}`);
+     }
+   } catch (error) {
+     setIsLoading(false);
+    // console.error("Error:", error);
+     toast.error("Failed to subscribe. Please try again later.");
+   }
+ };
+
+
   return (
     <div className="bg-[#000A0A] footer px-6 py-20 border-2 border-purple-600">
       <div className="flex flex-col gap-12 lg:flex-row lg:justify-between lg:items-center lg:gap-40 border-2 border-blue-500">
@@ -52,7 +87,15 @@ const Footer = () => {
             </div>
             <div className=" sm:col-span-2 sm:w-fit place-content-end border-2 border-lime-300">
               <button type="submit" className="primaryBtn ml-auto sm:mx-0">
-                Subscribe
+                {isLoading ? (
+                  <img
+                    src={Spinner}
+                    alt="Loading..."
+                    className="w-5 h-5 mx-auto"
+                  />
+                ) : (
+                  <>Subscribe</>
+                )}
               </button>
             </div>
           </form>
