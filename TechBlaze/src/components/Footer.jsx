@@ -8,10 +8,10 @@ const Footer = () => {
     // Handle the form submission here
   };
   return (
-    <div className="bg-[#000A0A] footer px-6 py-20 border-2 border-purple-600">
-      <div className="flex flex-col gap-12 lg:flex-row lg:justify-between lg:items-center lg:gap-40 border-2 border-blue-500">
-        <div className="flex flex-col gap-6  lg:w-3/5 border-2 border-green-400">
-          <section className="mb-6 border">
+    <footer className="bg-[#000A0A] footer px-6 py-20 sm:px-10 md:px-[60px]">
+      <div className="flex flex-col gap-12 lg:flex-row lg:justify-between lg:items-center lg:gap-40">
+        <div className="flex flex-col gap-6 lg:w-3/5">
+          <section className="mb-6">
             <img
               src={logo}
               alt="Nomadhaven logo"
@@ -20,7 +20,7 @@ const Footer = () => {
             />
           </section>
           <section>
-            <ul className="flex flex-col gap-2 sm:flex-row sm:justify-around sm:gap-0 border-2 border-red-400">
+            <ul className="flex flex-col gap-2 sm:flex-row sm:justify-around sm:gap-0">
               <li>How to use</li>
               <li>Hotspots</li>
               <li>Features</li>
@@ -28,15 +28,15 @@ const Footer = () => {
             </ul>
           </section>
         </div>
-        <section className="lg:w-2/5 border-2 border-orange-300">
+        <section className="lg:w-2/5">
           <form
             onSubmit={handleSubmit}
-            className="mx-auto sm:flex justify-between gap-4 border-2"
+            className="mx-auto sm:flex justify-between gap-4 "
           >
-            <div className=" mb-4 sm:w-4/5 sm:mb-0 border-2 border-teal-400">
+            <div className=" mb-4 sm:w-4/5 sm:mb-0">
               <label
                 htmlFor="email"
-                className="block mb-4 text-base font-semibold text-White"
+                className="block mb-4 text-lg sm:text-xl md:text-xl lg:text-2xl font-semibold text-White"
               >
                 Join our news letter
               </label>
@@ -50,7 +50,7 @@ const Footer = () => {
                 className="inputFill sm:w-full"
               />
             </div>
-            <div className=" sm:col-span-2 sm:w-fit place-content-end border-2 border-lime-300">
+            <div className=" sm:col-span-2 sm:w-fit place-content-end">
               <button type="submit" className="primaryBtn ml-auto sm:mx-0">
                 Subscribe
               </button>
@@ -63,7 +63,7 @@ const Footer = () => {
           <small>C 2024 NomadHaven. All Rights Reserved</small>
         </p>
       </section>
-    </div>
+    </footer>
   );
 };
 
