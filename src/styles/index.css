@@ -52,10 +52,6 @@ body {
   place-items: center;
   color: var(--nomad-font-color);
   background-color: var(--nomad-secondary-color);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 * {
   box-sizing: border-box;
