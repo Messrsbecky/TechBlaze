@@ -13,7 +13,6 @@ import arrow from "../../../assets/icons/yellow-right-arrow.svg";
 import see from "../../../assets/icons/white-see.svg";
 import love from "../../../assets/icons/red-love.svg";
 
-
 import React, { useState } from "react";
 
 const cards = [
@@ -53,7 +52,7 @@ const cards = [
     id: 5,
     image: sugarConference,
     title: "Erin Ijesha Waterfall",
-    height: "h-96",
+    height: "h-72",
     location: "Abuja",
     views: "220",
   },
@@ -61,7 +60,7 @@ const cards = [
     id: 6,
     image: heritageSpot,
     title: "Badagry Heritage Museum",
-    height: "h-72",
+    height: "h-96",
     location: "Lagos",
     views: "380",
   },
@@ -69,7 +68,7 @@ const cards = [
     id: 7,
     image: ijeshaWaterfall,
     title: "Erin Ijesha Waterfall",
-    height: "h-96",
+    height: "h-72",
     location: "Osun",
     views: "300",
   },
@@ -77,7 +76,7 @@ const cards = [
     id: 8,
     image: lekkiReserve,
     title: "Lekki Reserve Center",
-    height: "h-72",
+    height: "h-96",
     location: "Lagos",
     views: "800",
   },
@@ -101,34 +100,42 @@ const cards = [
   // Add more card objects here
 ];
 
-const MasonGrid = () => {
+const HotSpots = () => {
   return (
-    <div className="flex flex-wrap gap-4 p-4">
+    <div className="flex flex-wrap gap-4 p-4 justify-center ">
       {cards.map((card) => (
         <div
           key={card.id}
-          className={`relative w-full md:w-1/2 lg:w-1/3 ${card.height} rounded-lg shadow-lg overflow-hidden`}
+          className={`relative flex  w-full sm:w-[45%] lg:w-[30%] ${card.height} rounded-lg shadow-lg overflow-hidden`}
         >
           <img
             src={card.image}
             alt={card.title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 w-full bg-black bg-opacity-40 text-white text-center px-4 py-7 opacity-0 transition-opacity hover:opacity-100">
-            <section>
-              <div >
-                <p className="text-[#E6E7E7]">{card.title}</p>
-                <p className="text-[#E6E7E7]">{card.location}</p>
-              </div>
-              <div></div>
-            </section>
-            <section className="flex items-center justify-between">
-              <button className="m-2 px-4 py-2 primaryBtn">Book</button>
-              <button className="m-2 px-4 py-2 tertiaryBtn">
-                Chat buddy
-                <img src={arrow} alt="right arrow" />
-              </button>
-            </section>
+          <div className="absolute inset-0 w-full bg-black bg-opacity-40 text-white px-4 py-7 opacity-0 transition-opacity hover:opacity-100">
+            <div className="flex flex-col justify-between border-4 border-yellow-500 w-full h-full">
+              <section className="border-4 flex justify-between items-start">
+                <div className="border-4 border-blue-400 flex flex-col justify-start">
+                  <p className="text-[#E6E7E7]">{card.title}</p>
+                  <p><small className="text-[#E6E7E7]">{card.location}</small></p>
+                </div>
+                <div className="border-4 border-green-400 flex gap-4 items-center">
+                  <div className="border border-red-400 flex gap-1">
+                    <img src={see} alt="number of views icon" width={15} />
+                    <p className="text-[#E6E7E7]">{card.views}</p>
+                  </div>
+                  <img src={love} alt="like icon" width={24} height={24} />
+                </div>
+              </section>
+              <section className="flex items-center justify-between border-4">
+                <button className="m-2 px-4 py-2 primaryBtn">Book</button>
+                <button className="m-2 px-4 py-2 tertiaryBtn">
+                  Chat buddy
+                  <img src={arrow} alt="right arrow" />
+                </button>
+              </section>
+            </div>
           </div>
         </div>
       ))}
@@ -136,4 +143,4 @@ const MasonGrid = () => {
   );
 };
 
-export default MasonGrid;
+export default HotSpots;
