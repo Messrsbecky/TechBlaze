@@ -1,11 +1,11 @@
 import { useState } from "react";
-import arrow from "src/assets/icons/yellow-right-arrow.svg";
-import festival from "src/assets/images/landingpage/prime-friday.svg";
-import seminar from "src/assets/images/landingpage/knowledge-seminar.svg";
-import party from "src/assets/images/landingpage/tiki-bar.svg";
-import influence from "src/assets/images/landingpage/influence.svg";
-import vibes from "src/assets/images/landingpage/vibes-on-vibes.svg";
-import change from "src/assets/images/landingpage/embracing-change.svg";
+import arrow from "../../../assets/icons/yellow-right-arrow.svg";
+import festival from "../../../assets/images/landingpage/prime-friday.svg";
+import seminar from "../../../assets/images/landingpage/knowledge-seminar.svg";
+import party from "../../../assets/images/landingpage/tiki-bar.svg";
+import influence from "../../../assets/images/landingpage/influence.svg";
+import vibes from "../../../assets/images/landingpage/vibes-on-vibes.svg";
+import change from "../../../assets/images/landingpage/embracing-change.svg";
 const Events = () => {
   const [cards, setCards] = useState([
     {
@@ -58,17 +58,17 @@ const Events = () => {
       },
   ]);
   return (
-    <div className="border-2 border-green-600 mx-4 mb-40">
+    <div className=" flex flex-col items-center mx-4 sm:mx-10 md:mx-[60px] lg:mx-20 mb-40">
       <div className="mb-[60px]">
-        <h2>Latest Upcoming Events</h2>
+        <h2>Latest <span>Upcoming</span> Events</h2>
       </div>
-      <div className="border-4 border-purple-400 flex flex-col gap-12 w-fit ">
+      <div className="flex flex-wrap gap-12 w-fit justify-center ">
         {cards.map((card) => (
-          <section className="" key={card.id}>
+          <section className=" sm:w-[90%] md:w-[40%] lg:w-[30%]" key={card.id}>
             <div>
-              <img src={card.image} alt={card.alt} width={358}/>
+              <img src={card.image} alt={card.alt} width={358} className="w-full"/>
             </div>
-            <div className="flex flex-col border-4 gap-2">
+            <div className="flex flex-col gap-2 mt-6">
               <h4>{card.title}</h4>
               <div className="flex justify-between items-center">
                 <div>

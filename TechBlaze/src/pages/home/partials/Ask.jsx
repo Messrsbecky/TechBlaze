@@ -1,9 +1,9 @@
 import { useState } from "react";
-import plusIcon from "src/assets/icons/add.svg"
-import  close from "src/assets/icons/Close.svg"
+import plusIcon from "../../../assets/icons/add.svg"
+import  close from "../../../assets/icons/Close.svg"
 
 const Ask = () => {
-  const [cards, setcards] = useState([
+  const [cards, setCards] = useState([
     {
       question: "What is NomadHaven?",
       answers:
@@ -44,12 +44,12 @@ const Ask = () => {
   ]);
   return (
     <section className="mx-4 sm:mx-8 md:mx-[60px] lg:mx-20 mb-40" >
-      <h2 className="text-center">What People Ask</h2>
+      <h2 className="text-center">What <span> People </span> Ask</h2>
       <div className="flex flex-col gap-10 mt-16 ">
         {cards.map((card) => (
           <div className="border border-[#B0B6B6] p-6 sm:p-8 md:p-10 lg:px-10 lg:py-[42]  rounded-2xl" key= {card.id}>
             <div className="flex  justify-between items-center">
-            <h4> {card.question}</h4>
+            <h5> {card.question}</h5>
             <div className="inline-flex">
             <img src={plusIcon} alt="view icon" width={40} />
             <img src={close} alt="close icon" width={40} />

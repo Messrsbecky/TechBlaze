@@ -57,19 +57,22 @@ const Choose = () => {
     },
   ]);
   return (
-    <div className="px-4 flex flex-col gap-[60px] py-20 bg-White">
+    <div className="px-4 sm:px-10 md:px-[60px] lg:px-20 flex flex-col gap-[60px] py-20 bg-White mb-60">
       <div>
         <h2 className="text-center">Why choose the NomadHaven?</h2>
       </div>
-      <div className="border-8  flex flex-col flex-wrap  justify-center gap-12 ">
+      <div className=" flex flex-wrap justify-center items-start gap-12 sm:gap-6 w-full">
         {cards.map((card) => (
-          <section className=" border-green-200 border-2 flex flex-col grow-0 shrink-0 basis-full sm:basis-8/12 md:basis-[45%] lg:basis-[30%]" key={card.id}>
-            <div className="flex gap-1 items-center mb-2  ">
+          <section
+            className="flex flex-col gap-2 p-4 w-full sm:w-[90%] md:w-[40%] lg:w-[30%]"
+            key={card.id}
+          >
+            <div className="flex gap-2 items-center mb-2  ">
               <div>
                 <img src={card.image} alt={card.alt} width={36} />
               </div>
               <div>
-                <h6>{card.title}</h6>
+                <h5 className="">{card.title}</h5>
               </div>
             </div>
             <div>
