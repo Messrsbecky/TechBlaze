@@ -80,7 +80,7 @@ const Signup = () => {
 
       setError(err.message);
     }
-
+  }
 
   return (
     <form
@@ -176,12 +176,7 @@ text-base font-semibold"
               </>
             )}
 </button>
-         
-          <button type="button" className=" secondaryBtn gap-2 w-full">
-            <img src={google} alt="google icon" className="w-5 h-5" />
-            Sign up with google
-
-          </button>
+      
         </section>
       </div>
       <section className="text-center">
@@ -201,5 +196,5 @@ text-base font-semibold"
     </form>
   );
 };
-}
+
 export default Signup;
