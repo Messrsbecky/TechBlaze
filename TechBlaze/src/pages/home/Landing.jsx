@@ -6,7 +6,7 @@ import Locations from "./partials/Locations";
 import Supporters from "./partials/Supporters";
 import Testimonials from "./partials/Testimonials";
 import Transform from "./partials/Transform";
-import Choose from "../destination/partials/Choose"
+import Choose from "./partials/Choose"
 
 
 const Landing = () => {
