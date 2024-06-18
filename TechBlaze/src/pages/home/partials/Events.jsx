@@ -58,17 +58,17 @@ const Events = () => {
       },
   ]);
   return (
-    <div className="border-2 border-green-600 flex flex-col items-center mx-4 sm:mx-10 md:mx-[60px] lg:mx-20 mb-40">
+    <div className=" flex flex-col items-center mx-4 sm:mx-10 md:mx-[60px] lg:mx-20 mb-40">
       <div className="mb-[60px]">
-        <h2>Latest Upcoming Events</h2>
+        <h2>Latest <span>Upcoming</span> Events</h2>
       </div>
-      <div className="border-4 border-purple-400 flex flex-col gap-12 w-fit ">
+      <div className="flex flex-wrap gap-12 w-fit justify-center ">
         {cards.map((card) => (
-          <section className="" key={card.id}>
+          <section className=" sm:w-[90%] md:w-[40%] lg:w-[30%]" key={card.id}>
             <div>
-              <img src={card.image} alt={card.alt} width={358}/>
+              <img src={card.image} alt={card.alt} width={358} className="w-full"/>
             </div>
-            <div className="flex flex-col border-4 gap-2">
+            <div className="flex flex-col gap-2 mt-6">
               <h4>{card.title}</h4>
               <div className="flex justify-between items-center">
                 <div>

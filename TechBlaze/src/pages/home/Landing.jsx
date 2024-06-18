@@ -6,23 +6,22 @@ import Locations from "./partials/Locations";
 import Supporters from "./partials/Supporters";
 import Testimonials from "./partials/Testimonials";
 import Transform from "./partials/Transform";
-import Choose from "./partials/Choose"
-
+import Choose from "./partials/Choose";
 
 const Landing = () => {
-    return ( 
-        <main>
-            <Hero/>
-            <Supporters/>
-            <Transform/>
-            <Locations/>
-            <Choose/>
-            <Events/>
-            <Testimonials/>
-            <Explore/>
-            <Ask/>
-        </main>
-     );
-}
- 
+  return (
+    <main>
+      <Hero />
+      <Supporters />
+      <Transform />
+      <Locations />
+      <Choose />
+      <Events />
+      <Testimonials />
+      <Explore />
+      <Ask />
+    </main>
+  );
+};
+
 export default Landing;

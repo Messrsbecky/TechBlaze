@@ -7,21 +7,21 @@ import herobg from "../../../assets/images/landingpage/hero-bg.svg";
 const Hero = () => {
   return (
     <header
-      className=" border-4 border-orange-400 mb-40  bg-cover bg-center"
+      className=" mb-40  bg-cover bg-center"
       style={{ backgroundImage: `url(${herobg})` }}
     >
-      <div className="relative z-10 border-2 border-purple-500 text-center flex flex-col gap-14 p-10 mb-32">
-        <section className="flex justify-between items-center">
-          <div className="flex flex-col items-center">
-            <img src={fiveStar} alt="five star rating" width={152} />
+      <div className="relative z-10 text-center flex flex-col gap-14 p-10 mb-40 pt-32 ">
+        <section className="flex justify-between mx-auto items-center gap-8">
+          <div className="flex flex-col items-center ">
+            <img src={fiveStar} alt="five star rating" width={100} />
             <p>“My fun and hangout organizer”</p>
           </div>
-          <div className="flex flex-col items-center">
-            <img src={fiveStar} alt="five star rating" width={152} />
+          <div className=" flex-col items-center hidden md:flex">
+            <img src={fiveStar} alt="five star rating" width={100} />
             <p>“The perfect map to Naija’s trending spots.”</p>
           </div>
-          <div className="flex flex-col items-center">
-            <img src={fiveStar} alt="five star rating" width={152} />
+          <div className="flex-col items-center hidden lg:flex  ">
+            <img src={fiveStar} alt="five star rating" width={100} />
             <p>“Cruise, hangout, fun, they have it all.”</p>
           </div>
         </section>
@@ -45,11 +45,31 @@ const Hero = () => {
           </button>
         </section>
       </div>
-      <section className="flex ">
-        <img src={image4} alt="sugar conference hall" width={180} className="border-4 border-white rounded-2xl origin-top- rotate-[-4deg]"/>
-        <img src={image2} alt="interior view of nike art gallery" width={180} className="border-4 border-white rounded-2xl origin-top- -rotate-[-4deg]"/>
-        <img src={image3} alt="landmark beach" width={180} className="border-4 border-white rounded-2xl origin-top- rotate-[-4deg]"/>
-        <img src={image1} alt="sugar conference hall" width={180} className="border-4 border-white rounded-2xl origin-top- -rotate-[-4deg]"/>
+      <section className="flex  items-center justify-center ">
+        <img
+          src={image4}
+          alt="sugar conference hall"
+          width={300}
+          className="border-4 border-white rounded-2xl origin-top- rotate-[-4deg] w-4/5 sm:w-full"
+        />
+        <img
+          src={image2}
+          alt="interior view of nike art gallery"
+          width={300}
+          className="border-4 border-white rounded-2xl origin-top- -rotate-[-4deg] w-4/5 sm:w-full"
+        />
+        <img
+          src={image3}
+          alt="landmark beach"
+          width={300}
+          className="border-4 border-white rounded-2xl origin-top- rotate-[-4deg] hidden sm:block w-full"
+        />
+        <img
+          src={image1}
+          alt="sugar conference hall"
+          width={300}
+          className="border-4 border-white rounded-2xl origin-top- -rotate-[-4deg] hidden md:block w-full"
+        />
       </section>
     </header>
   );
