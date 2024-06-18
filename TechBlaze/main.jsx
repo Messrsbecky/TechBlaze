@@ -1,26 +1,34 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, createBrowserRouter, RouterProvider  } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 
 // layout
 import RootLayOut from "./layout/RootLayout";
+import DashboardLayout from "./layout/DashboardLayout";
 
 // pages
-import Landing from "./pages/destination/Landing";
+import Landing from "./pages/home/Landing";
 import NotFound from "./pages/error/NotFound";
-import Dashboard from "./pages/dashboard/Dashboard";
+import HotSpots from "./pages/dashboard/partials/HotSpots";
 
 // styles
 import "../src/styles/index.css";
 
-//components
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import SideNav from "./pages/dashboard/partials/SideNav";
-
-//authentication
+// authentication
 import SignUpPage from "./pages/registration/SignUpPage";
 import LoginPage from "./pages/registration/LoginPage";
+
+// components
+// import ProtectedRoute from "./components/ProtectedRoute";
+
+// Fake authentication function (replace with your actual authentication logic)
+const isAuthenticated = () => {
+  return true; // Replace with actual authentication check
+};
 
 const router = createBrowserRouter([
   {
@@ -34,9 +42,32 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: (
+          <ProtectedRoute
+            isAuthenticated={isAuthenticated()}
+            element={<DashboardLayout />}
+          />
+        ),
+        children: [
+          {
+            index: true,
+            element: <Dashboard />,
+          },
+          {
+            path: "hotspots",
+            element: <HotSpots />,
+          },
+        ],
       },
     ],
+  },
+  {
+    path: "/signup",
+    element: <SignUpPage />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
   },
 ]);
 
