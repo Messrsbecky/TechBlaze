@@ -96,7 +96,7 @@ const Login = () => {
         <section className="w-full flex flex-col items-center gap-6">
           {/* <input type="submit" value="Log in" className="w-full primaryBtn" /> */}
 
-          <button id="submit" type="submit" className="w-full primaryBtn">
+          <button id="submit" type="submit" className="w-full primaryBtn text-center">
             {isLoading ? (
               <img src={Spinner} alt="Loading..." className="w-5 h-5 mx-auto" />
             ) : (
@@ -106,7 +106,7 @@ const Login = () => {
 
           <button
             type="button"
-            className="secondaryBtn gap-2 w-full"
+            className="secondaryBtn gap-2 w-full text-center"
             onClick={handleGoogleSignIn}
             disabled={isLoading}
           >

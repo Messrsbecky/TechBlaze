@@ -1,11 +1,9 @@
-
 import { useState } from "react";
 import google from "../../../assets/icons/google.svg";
 import { signUp, signInWithGoogle } from "../functions/authService"; //addition
 import { writeUserData } from "../functions/database"; //addition
 import Spinner from "../../../assets/icons/Spinner.svg"; //addition
 import Swal from "sweetalert2"; //addition
-
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -65,13 +63,12 @@ const Signup = () => {
     }
   };
 
-
   const handleGoogleSignUp = async () => {
     try {
       setIsLoading(true);
       const user = await signInWithGoogle();
       setUserId(user.uid);
-       writeUserData(user.uid, user.email);
+      writeUserData(user.uid, user.email);
 
       setIsLoading(false);
       setError(null);
@@ -80,7 +77,7 @@ const Signup = () => {
 
       setError(err.message);
     }
-  }
+  };
 
   return (
     <form
@@ -132,15 +129,10 @@ const Signup = () => {
               htmlFor="Confirm password"
               className="block mb-2 
 text-base font-semibold"
-            >
-
-       
-
-            </label>
+            ></label>
             <input
               type="confirmPassword"
               id="comfirmPassword"
-
               value={confirmPassword} //addition (from password)
               onChange={(e) => setConfirmPassword(e.target.value)} //addition (from setPassword)
               placeholder="Enter password"
@@ -150,8 +142,11 @@ text-base font-semibold"
           </div>
         </section>
         <section className="w-full flex flex-col items-center gap-6">
-
-          <button id="submit" type="submit" className="w-full primaryBtn">
+          <button
+            id="submit"
+            type="submit"
+            className="w-full primaryBtn text-center"
+          >
             {isLoading ? (
               <img src={Spinner} alt="Loading..." className="w-5 h-5 mx-auto" />
             ) : (
@@ -159,11 +154,9 @@ text-base font-semibold"
             )}
           </button>
 
-         
-
           <button
             type="button"
-            className="secondaryBtn gap-2 w-full"
+            className="secondaryBtn gap-2 w-ful text-center"
             onClick={handleGoogleSignUp}
             disabled={isLoading}
           >
@@ -175,22 +168,21 @@ text-base font-semibold"
                 Sign up with Google
               </>
             )}
-</button>
-      
+          </button>
         </section>
       </div>
       <section className="text-center">
         <p>
-
           Have an account already?
           <span className="text-yellow-500 cursor-pointer font-bold ">
             {" "}
             Log in
           </span>
-
-        Have an account already?
-          <span className="text-yellow-500 cursor-pointer font-bold "> Log in</span>
-
+          Have an account already?
+          <span className="text-yellow-500 cursor-pointer font-bold ">
+            {" "}
+            Log in
+          </span>
         </p>
       </section>
     </form>

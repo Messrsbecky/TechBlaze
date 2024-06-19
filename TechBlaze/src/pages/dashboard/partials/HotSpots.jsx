@@ -102,7 +102,7 @@ const cards = [
 
 const HotSpots = () => {
   return (
-    <div className="flex flex-wrap gap-4 p-4 justify-center ">
+    <div className="  p-4 justify-center ">
       {cards.map((card) => (
         <div
           key={card.id}
