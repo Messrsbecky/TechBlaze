@@ -1,6 +1,6 @@
 import { useState } from "react";
-import plusIcon from "../../../assets/icons/add.svg"
-import  close from "../../../assets/icons/Close.svg"
+import plusIcon from "../../../assets/icons/add.svg";
+import close from "../../../assets/icons/Close.svg";
 
 const Ask = () => {
   const [cards, setCards] = useState([
@@ -42,20 +42,51 @@ const Ask = () => {
       id: 6,
     },
   ]);
+  const [expandedCardId, setExpandedCardId] = useState(null);
+
+  const handleToggle = (id) => {
+    if (expandedCardId === id) {
+      setExpandedCardId(null);
+    } else {
+      setExpandedCardId(id);
+    }
+  };
   return (
-    <section className="mx-4 sm:mx-8 md:mx-[60px] lg:mx-20 mb-40" >
-      <h2 className="text-center">What <span> People </span> Ask</h2>
+    <section className="mx-4 sm:mx-8 md:mx-[60px] lg:mx-20 mb-40">
+      <h2 className="text-center">
+        What <span> People </span> Ask
+      </h2>
       <div className="flex flex-col gap-10 mt-16 ">
         {cards.map((card) => (
-          <div className="border border-[#B0B6B6] p-6 sm:p-8 md:p-10 lg:px-10 lg:py-[42]  rounded-2xl" key= {card.id}>
+          <div
+            className="border border-[#B0B6B6] p-6 sm:p-8 md:p-10 lg:px-10 lg:py-[42]  rounded-2xl"
+            key={card.id}
+          >
             <div className="flex  justify-between items-center">
-            <h5> {card.question}</h5>
-            <div className="inline-flex">
-            <img src={plusIcon} alt="view icon" width={40} />
-            <img src={close} alt="close icon" width={40} />
+              <h5> {card.question}</h5>
+              <div className="inline-flex">
+                {expandedCardId === card.id ? (
+                  <img
+                    src={closeIcon}
+                    alt="close icon"
+                    width={40}
+                    onClick={() => handleToggle(card.id)}
+                    className="cursor-pointer"
+                  />
+                ) : (
+                  <img
+                    src={plusIcon}
+                    alt="view icon"
+                    width={40}
+                    onClick={() => handleToggle(card.id)}
+                    className="cursor-pointer"
+                  />
+                )}
+              </div>
             </div>
-            </div>
-            <p className="mt-6">{card.answers}</p>
+            {expandedCardId === card.id && (
+              <p className="mt-6">{card.answers}</p>
+            )}
           </div>
         ))}
       </div>
