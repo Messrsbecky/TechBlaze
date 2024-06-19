@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import google from "../../../assets/icons/google.svg";
+import { NavLink } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -63,7 +64,7 @@ const Login = () => {
               className="block mb-2 
 text-base font-semibold"
             >
-             Confirm Password
+              Confirm Password
             </label>
             <input
               type="confirmPassword"
@@ -86,8 +87,12 @@ text-base font-semibold"
       </div>
       <section className="text-center">
         <p>
-        Have an account already?
-          <span className="text-yellow-500 cursor-pointer font-bold "> Log in</span>
+          Have an account already?
+          <NavLink to="/login" >
+            <span className="text-yellow-500 cursor-pointer text-base font-bold">
+              Log in
+            </span>
+          </NavLink>
         </p>
       </section>
     </form>

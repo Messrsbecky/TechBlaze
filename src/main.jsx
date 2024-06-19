@@ -1,57 +1,70 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
-//
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
 // layout
-// import RootLayOut from "./layout/RootLayout";
-//
-// pagesL
-// import NotFound from "./pages/error/NotFound";
-// import Dashboard from "./pages/dashboard/Dashboard";
-// import Services from "./pages/services/Services";
+import RootLayout from "./layout/RootLayout";
+import DashboardLayout from "./layout/DashboardLayout";
+
+// pages
+import Landing from "./pages/home/Landing";
+import NotFound from "./pages/error/NotFound";
+import HotSpots from "./pages/dashboard/partials/HotSpots";
+import ChatWindow from "./pages/dashboard/DashboardPages/ChatWindow"; // Example hotspots page
+
 // styles
+import "./styles/index.css";
 
-import "../src/styles/index.css";
-// import Hero from "./pages/home/partials/Hero";
-// import Navbar from "./components/Navbar";
-// import LoginBento from "./pages/registration/partials/LoginBento";
-// import LoginPage from "./pages/registration/LoginPage";
-// import SignUpPage from "./pages/registration/SignUpPage";
-// 
-//authentication
-import SignUpPage from "./pages/registration/SignUpPage"
+// authentication
+import SignUpPage from "./pages/registration/SignUpPage";
+import LoginPage from "./pages/registration/LoginPage";
 
-// const router = createBrowserRouter([
-// {
-// path: "/",
-// element: <RootLayOut />,
-// errorElement: <NotFound />,
-// children: [
-// {
-// index: true,
-// element: <LandingPage />,
-// },
-// {
-// path: "/dashboard",
-// element: <Dashboard />,
-// },
-// {
-// path: "/services",
-// element: <Services />,
-// },
-// ],
-// },
-// ]);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        index: true,
+        element: <Landing />,
+      },
+      {
+        path: "signup",
+        element: <SignUpPage />,
+      },
+      {
+        path: "login",
+        element: <LoginPage />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <HotSpots />, // Default dashboard page
+      },
+      {
+        path: "overview",
+        element: <HotSpots />, // Example page for overview
+      },
+      {
+        path: "chatwindow",
+        element: <ChatWindow />, // Example page for hotspots
+      },
+      // Add more nested routes as needed
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    {/* <RouterProvider router={router} /> */}
-    {/* <Login /> */}
-    {/* <SignUpPage/> */}
-    {/* <Hero /> */}
-    {/* <Navbar /> */}
-    {/* <LoginBento /> */}
-    {/* <LoginPage/> */}
-    <SignUpPage/>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );

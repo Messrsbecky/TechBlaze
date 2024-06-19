@@ -18,17 +18,13 @@ export default {
     // other plugins...
     function ({ addUtilities }) {
       addUtilities({
-        ".object-top-left": {
-          "object-position": "top left",
-        },
-        ".object-top-right": {
-          "object-position": "top right",
-        },
-        ".object-bottom-left": {
-          "object-position": "bottom left",
-        },
-        ".object-bottom-right": {
-          "object-position": "bottom right",
+        ".no-scrollbar": {
+          /* For Firefox */
+          "scrollbar-width": "none",
+          /* For Chrome, Safari, and Opera */
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
         },
       });
     },

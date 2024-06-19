@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import google from "../../../assets/icons/google.svg";
+import { NavLink } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -68,10 +69,12 @@ const Login = () => {
       </div>
       <section className="text-center">
         <p>
-          Don’t have an account yet?{" "}
-          <span className="text-yellow-500 cursor-pointer font-bold">
-            Sign up
-          </span>
+          Don’t have an account yet?
+          <NavLink to="/signup">
+            <span className="text-yellow-500 cursor-pointer text-base font-bold">
+              Sign up
+            </span>
+          </NavLink>
         </p>
       </section>
     </form>
